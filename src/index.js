@@ -6,7 +6,7 @@ import store from "./store/createStore";
 import App from "./App/App";
 import {Provider} from "react-redux";
 
-export const history = createBrowserHistory();
+export const  history = createBrowserHistory();
 
 ReactDOM.render(
     <Provider store={store}>
