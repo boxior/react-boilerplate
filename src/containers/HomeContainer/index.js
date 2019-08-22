@@ -62,4 +62,4 @@ HomeContainer.propTypes = {
   getNasaPlanetary: PropTypes.func,
   home: PropTypes.object,
   setLocale: PropTypes.func
-}
+};

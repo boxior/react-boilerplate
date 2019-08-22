@@ -4,5 +4,5 @@ import language from "../containers/LanguageContainer/reducer";
 
 export default combineReducers({
     home,
-    language
+    language,
 });

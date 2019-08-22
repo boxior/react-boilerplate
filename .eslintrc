@@ -10,7 +10,9 @@
   "globals": {
     "Promise": "writable",
     "console": "writable",
-    "document": "writable"
+    "document": "writable",
+    "require": "writable",
+    "module": "writable"
   },
   "settings": {
     "react": {
