@@ -1,3 +1,8 @@
 {
-  "home.title": "Home"
+  "home.title": "Home",
+  "logo.title": "Logo",
+  "footer.title": "Footer",
+  "meta.title.home": "Home",
+  "meta.title.contact": "Contact",
+  "contact.title": "Contact"
 }

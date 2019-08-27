@@ -14,7 +14,7 @@ import {makeLocaleSelector} from "./selectors";
 import messages_de from "../../translations/de.json";
 import messages_en from "../../translations/en.json";
 
-const messages = {
+export const messagesMap = {
     'de': messages_de,
     'en': messages_en
 };
@@ -24,10 +24,10 @@ const mapStateToProps = state => ({
 });
 
 export class LanguageProvider extends React.PureComponent {
-    // eslint-disable-line react/prefer-stateless-function
+
     static propTypes = {
         children: PropTypes.element.isRequired,
-        locale: PropTypes.string,
+        locale: PropTypes.string
     };
 
     render() {
@@ -37,7 +37,7 @@ export class LanguageProvider extends React.PureComponent {
             <IntlProvider
                 locale={locale}
                 key={locale}
-                messages={messages[locale]}
+                messages={messagesMap[locale]}
             >
                 {React.Children.only(children)}
             </IntlProvider>

@@ -1,12 +1,35 @@
-import React from "react";
+import React from 'react'
 import ContactView from "../../components/Contact";
+import LayoutView from "../../components/Main/Layout";
+import {Helmet} from "react-helmet";
+import messages from "./messages";
+import {injectIntl} from "react-intl";
+import {compose} from "redux";
+import PropTypes from "prop-types";
 
-const ContactContainer = () => {
-    console.log("ContactView");
+const ContactContainer = (props) => {
+
+    const {
+        intl,
+    } = props;
 
     return (
-        <ContactView/>
+        <>
+            <Helmet>
+                <title>{intl.formatMessage({...messages.metaTitle})}</title>
+                <meta name="description" content="Home page"/>
+            </Helmet>
+            <LayoutView>
+                <ContactView/>
+            </LayoutView>
+        </>
     );
 };
 
-export default ContactContainer;
+export default compose(
+    injectIntl,
+)(ContactContainer);
+
+ContactContainer.propTypes = {
+    intl: PropTypes.object
+};

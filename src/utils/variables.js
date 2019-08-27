@@ -11,3 +11,12 @@ export const fontsMap = {
         family: "Lato, sans"
     },
 };
+
+export const routMap = {
+    home: "/",
+    contact: "/contact",
+};
+
+export const anchorsMap = {
+    header: "header"
+};

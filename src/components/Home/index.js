@@ -5,7 +5,15 @@ import messages from "./messages";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import {Container} from "../Main/StyledComponents";
 
+const HomeWrap = styled.div`
+    
+`;
+
+const HomeContainer = styled(Container)`
+    
+`;
 const ButtonS = styled(Button)`
     background: transparent;
     margin: 10px;
@@ -44,15 +52,17 @@ const Home = props => {
     console.log("home", home);
 
     return (
-        <>
-            <button type={`button`}><FormattedMessage {...messages.homeTitle}/></button>
-            <button type={`button`} onClick={onChangeLocale(`en`)}>En</button>
-            <button type={`button`} onClick={onChangeLocale(`de`)}>De</button>
-            <button type={`button`} onClick={handleGetNasaPlanetary}>Get Nasa Planetary</button>
-            <button type={`button`} onClick={handleGetNasaAsteroids}>Get Nasa Asteroids</button>
-            <ButtonS type={`button`} onClick={handleGetAllNasa}>Get Nasa All</ButtonS>
-            <LintToContact to={"/contact"}>LintToContact</LintToContact>
-        </>
+        <HomeWrap>
+            <HomeContainer>
+                <button type={`button`}><FormattedMessage {...messages.homeTitle}/></button>
+                <button type={`button`} onClick={onChangeLocale(`en`)}>En</button>
+                <button type={`button`} onClick={onChangeLocale(`de`)}>De</button>
+                <button type={`button`} onClick={handleGetNasaPlanetary}>Get Nasa Planetary</button>
+                <button type={`button`} onClick={handleGetNasaAsteroids}>Get Nasa Asteroids</button>
+                <ButtonS type={`button`} onClick={handleGetAllNasa}>Get Nasa All</ButtonS>
+                <LintToContact to={"/contact"}>LintToContact</LintToContact>
+            </HomeContainer>
+        </HomeWrap>
     )
 };
 export default Home;

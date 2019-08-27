@@ -20,7 +20,7 @@ const ContactView = () => {
 
     return (
         <ContactWrap>
-            <h1>ContactWrap</h1>
+            <h1>Contact page</h1>
             <LinkToHome onClick={handleLinkToHome}>Link to home</LinkToHome>
         </ContactWrap>
     );

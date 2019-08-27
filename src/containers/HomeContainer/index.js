@@ -7,6 +7,9 @@ import {makeHomeSelector} from "./selectors";
 import {getAllNasa, getNasaAsteroids, getNasaPlanetary} from "./actions";
 import PropTypes from "prop-types";
 import {setLocale} from "../LanguageContainer/actions";
+import LayoutView from "../../components/Main/Layout";
+import {injectIntl} from "react-intl";
+import messages from "./messages";
 
 const mapStateToProps = state => ({
     home: makeHomeSelector(state)
@@ -32,21 +35,24 @@ class HomeContainer extends Component {
             setLocale,
             getAllNasa,
             home,
+            intl,
         } = this.props;
 
         return (
             <>
                 <Helmet>
-                    <title>Home Page</title>
+                    <title>{intl.formatMessage(messages.metaTitle)}</title>
                     <meta name="description" content="Home page"/>
                 </Helmet>
-                <Home
-                    getNasaPlanetary={getNasaPlanetary}
-                    getNasaAsteroids={getNasaAsteroids}
-                    getAllNasa={getAllNasa}
-                    setLocale={setLocale}
-                    home={home}
-                />
+                <LayoutView>
+                    <Home
+                        getNasaPlanetary={getNasaPlanetary}
+                        getNasaAsteroids={getNasaAsteroids}
+                        getAllNasa={getAllNasa}
+                        setLocale={setLocale}
+                        home={home}
+                    />
+                </LayoutView>
             </>
         );
     }
@@ -54,12 +60,15 @@ class HomeContainer extends Component {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withConnect)(HomeContainer);
+export default compose(
+    withConnect,
+    injectIntl,
+)(HomeContainer);
 
 HomeContainer.propTypes = {
-  getAllNasa: PropTypes.func,
-  getNasaAsteroids: PropTypes.func,
-  getNasaPlanetary: PropTypes.func,
-  home: PropTypes.object,
-  setLocale: PropTypes.func
+    getAllNasa: PropTypes.func,
+    getNasaAsteroids: PropTypes.func,
+    getNasaPlanetary: PropTypes.func,
+    home: PropTypes.object,
+    setLocale: PropTypes.func
 };
