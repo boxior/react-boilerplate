@@ -4,8 +4,10 @@ import {FormattedMessage} from "react-intl";
 import messages from "./messages";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
 import {Container} from "../Main/StyledComponents";
+import PlanetaryView from "./Planetary";
+import _get from "lodash.get";
+import AsteroidsView from "./Asteroids";
 
 const HomeWrap = styled.div`
     
@@ -14,28 +16,21 @@ const HomeWrap = styled.div`
 const HomeContainer = styled(Container)`
     
 `;
-const ButtonS = styled(Button)`
-    background: transparent;
-    margin: 10px;
-    padding: 5px;
-`;
 
-const LintToContact = styled(Link)`
-    
+const ButtonS = styled(Button)`
+    && {
+        margin: 10px;
+        padding: 5px;
+    }
 `;
 
 const Home = props => {
     const {
-        home,
         getNasaPlanetary,
         getNasaAsteroids,
         getAllNasa,
-        setLocale,
+        home,
     } = props;
-
-    const onChangeLocale = locale => () => {
-        setLocale(locale);
-    };
 
     const handleGetNasaPlanetary = () => {
         getNasaPlanetary();
@@ -49,18 +44,42 @@ const Home = props => {
         getAllNasa();
     };
 
-    console.log("home", home);
+    const planetaries = _get(home, "planetary.data.results", []);
+    const asteroids = _get(home, "asteroids.data.near_earth_objects.2015-09-07", []);
 
     return (
         <HomeWrap>
             <HomeContainer>
-                <button type={`button`}><FormattedMessage {...messages.homeTitle}/></button>
-                <button type={`button`} onClick={onChangeLocale(`en`)}>En</button>
-                <button type={`button`} onClick={onChangeLocale(`de`)}>De</button>
-                <button type={`button`} onClick={handleGetNasaPlanetary}>Get Nasa Planetary</button>
-                <button type={`button`} onClick={handleGetNasaAsteroids}>Get Nasa Asteroids</button>
-                <ButtonS type={`button`} onClick={handleGetAllNasa}>Get Nasa All</ButtonS>
-                <LintToContact to={"/contact"}>LintToContact</LintToContact>
+                <h1><FormattedMessage {...messages.homeTitle}/></h1>
+                <ButtonS
+                    variant={'outlined'}
+                    color={'primary'}
+                    onClick={handleGetNasaPlanetary}
+                    style={{marginLeft: 0}}
+                >
+                    Get Nasa Planetary
+                </ButtonS>
+                <ButtonS
+                    variant={'outlined'}
+                    color={'primary'}
+                    onClick={handleGetNasaAsteroids}
+                >
+                    Get Nasa Asteroids
+                </ButtonS>
+                <ButtonS
+                    variant={'contained'}
+                    color={'secondary'}
+                    onClick={handleGetAllNasa}
+                >
+                    Get Nasa All
+                </ButtonS>
+                <br/>
+                <PlanetaryView
+                    rows={planetaries}
+                />
+                <AsteroidsView
+                    rows={asteroids}
+                />
             </HomeContainer>
         </HomeWrap>
     )

@@ -1,27 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import {Button} from "@material-ui/core";
-import {history} from "../../index";
+import {FormattedMessage} from "react-intl";
+import messages from "./messages";
 
 const ContactWrap = styled.div`
     
 `;
 
-const LinkToHome = styled(Button)`
-    && {
-      background: green;
-    }
-`;
-
 const ContactView = () => {
-    const handleLinkToHome = () => {
-        history.push(`/`);
-    };
 
     return (
         <ContactWrap>
-            <h1>Contact page</h1>
-            <LinkToHome onClick={handleLinkToHome}>Link to home</LinkToHome>
+            <h1><FormattedMessage {...messages.title}/></h1>
         </ContactWrap>
     );
 };

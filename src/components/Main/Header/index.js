@@ -10,6 +10,7 @@ import {Container} from "../StyledComponents";
 const HeaderContainer = styled(Container)`
     width: 100%;
     position: fixed;
+    z-index: 1;
     height: 60px;
     background-color: aqua;
 

@@ -4,4 +4,5 @@ export default defineMessages({
     metaTitle: {
         id: "meta.title.contact"
     },
+    title: "contact.title"
 });
