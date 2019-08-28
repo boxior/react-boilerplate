@@ -70,5 +70,6 @@ HomeContainer.propTypes = {
     getNasaAsteroids: PropTypes.func,
     getNasaPlanetary: PropTypes.func,
     home: PropTypes.object,
+    intl: PropTypes.object,
     setLocale: PropTypes.func
 };

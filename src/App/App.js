@@ -6,7 +6,6 @@ import materialUiTheme from "../utils/materialUiTheme";
 import CoreLayout from "./CoreLayout";
 
 function App() {
-
     return (
         <ThemeProvider theme={materialUiTheme}>
             <BaseStyles/>
@@ -16,6 +15,5 @@ function App() {
         </ThemeProvider>
     );
 }
-
 
 export default App;
