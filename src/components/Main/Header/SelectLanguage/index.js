@@ -42,7 +42,6 @@ function SelectLanguageView(props) {
                 onChange={handleChange}
             >
                 {Object.keys(messagesMap).map(key => {
-                    console.log("key", key);
                     return (
                         <MenuItem component={`div`} button={false} key={key} value={key}>
                             {key}
